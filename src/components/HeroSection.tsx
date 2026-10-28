@@ -44,7 +44,14 @@ export function HeroSection() {
       <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to bottom, rgba(18,17,16,0.55) 0%, rgba(18,17,16,0.42) 40%, rgba(18,17,16,0.72) 100%)',
+        background: 'linear-gradient(to bottom, rgba(18,17,16,0.5) 0%, rgba(18,17,16,0.55) 40%, rgba(18,17,16,0.78) 100%)',
+        zIndex: 1,
+      }} />
+      {/* vinheta central para destacar o texto */}
+      <div aria-hidden="true" style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(18,17,16,0.42) 0%, transparent 100%)',
         zIndex: 1,
       }} />
 
@@ -106,8 +113,9 @@ export function HeroSection() {
               fontWeight: 400,
               letterSpacing: '0.32em',
               textTransform: 'uppercase',
-              color: 'var(--c-madeira)',
+              color: '#B8895A',
               marginBottom: '20px',
+              textShadow: '0 1px 12px rgba(18,17,16,0.9)',
             }}
           >
             Men&apos;s Edition
@@ -132,8 +140,9 @@ export function HeroSection() {
               fontSize: 'clamp(14px, 1.1vw, 17px)',
               fontWeight: 300,
               lineHeight: 1.5,
-              color: 'rgba(236,230,220,0.72)',
-              marginBottom: '4px',
+              color: 'rgba(236,230,220,0.9)',
+              marginBottom: '6px',
+              textShadow: '0 2px 16px rgba(18,17,16,0.95)',
             }}
           >
             Três dias. Sem atalhos.
@@ -150,8 +159,9 @@ export function HeroSection() {
               fontWeight: 400,
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: 'rgba(236,230,220,0.32)',
+              color: 'rgba(236,230,220,0.58)',
               marginBottom: '36px',
+              textShadow: '0 2px 12px rgba(18,17,16,0.95)',
             }}
           >
             Sem telas. Sem validação. Sem plateia.
@@ -168,7 +178,7 @@ export function HeroSection() {
               alignItems: 'center',
               justifyContent: 'center',
               background: 'transparent',
-              color: 'rgba(236,230,220,0.64)',
+              color: 'rgba(236,230,220,0.9)',
               fontFamily: 'var(--f-text)',
               fontSize: '11px',
               fontWeight: 400,
@@ -176,7 +186,7 @@ export function HeroSection() {
               textTransform: 'uppercase',
               textDecoration: 'none',
               padding: '13px 26px',
-              border: '1px solid rgba(236,230,220,0.2)',
+              border: '1px solid rgba(236,230,220,0.45)',
               borderRadius: '2px',
               cursor: 'pointer',
             }}

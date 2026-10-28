@@ -9,8 +9,6 @@ export function HeroSection() {
   const { scrollY } = useScroll()
   // background sobe mais devagar que o scroll — cria profundidade
   const bgY = useTransform(scrollY, [0, 700], ['0%', '-18%'])
-  // foreground (sem-fundo) sobe um pouco mais rápido que o bg, mais devagar que o scroll
-  const fgY = useTransform(scrollY, [0, 700], ['0%', '-8%'])
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 120)
@@ -188,7 +186,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Camada 4 — subject sem fundo (frente da cena, parallax mais rápido) */}
+      {/* Camada 4 — subject com máscara aplicada */}
       <motion.div
         aria-hidden="true"
         style={{
@@ -197,12 +195,20 @@ export function HeroSection() {
           left: 0,
           right: 0,
           bottom: '-12%',
-          y: fgY,
+          y: bgY,
           zIndex: 3,
           pointerEvents: 'none',
+          WebkitMaskImage: 'url(/Banner_01_mask_home.webp)',
+          WebkitMaskSize: 'cover',
+          WebkitMaskPosition: 'center top',
+          WebkitMaskRepeat: 'no-repeat',
+          maskImage: 'url(/Banner_01_mask_home.webp)',
+          maskSize: 'cover',
+          maskPosition: 'center top',
+          maskRepeat: 'no-repeat',
           opacity: visible ? 1 : 0,
           transition: 'opacity 1200ms 200ms var(--ease-out)',
-        }}
+        } as React.CSSProperties}
       >
         <img
           src="/Banner_01_sem-fundo.webp"

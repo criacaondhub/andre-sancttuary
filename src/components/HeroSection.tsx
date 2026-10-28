@@ -5,7 +5,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 export function HeroSection() {
   const { scrollY } = useScroll()
-  const bgY = useTransform(scrollY, [0, 700], ['0%', '-18%'])
+  const bgY = useTransform(scrollY, [0, 700], ['0%', '-12%'])
 
   return (
     <section
@@ -23,10 +23,10 @@ export function HeroSection() {
         aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '-12%',
+          top: '-15%',
           left: 0,
           right: 0,
-          bottom: '-12%',
+          bottom: '-15%',
           y: bgY,
         }}
       >

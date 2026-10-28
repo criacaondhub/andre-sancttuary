@@ -51,214 +51,236 @@ const cards: Card[] = [
 export function VivenciasSection() {
   const [selected, setSelected] = useState<Card | null>(null)
   const headingRef = useReveal<HTMLDivElement>()
+  const textRef    = useReveal<HTMLDivElement>()
 
   const handleClick = (card: Card) => {
     setSelected(prev => prev?.id === card.id ? null : card)
   }
 
   return (
-    <section
-      id="vivencias"
-      aria-labelledby="vivencias-title"
-      style={{
-        background: BG,
-        minHeight: '100svh',
+    <section id="vivencias" aria-labelledby="vivencias-title" style={{ background: BG, overflow: 'hidden' }}>
+
+      {/* parte superior: texto esquerda + grid direita */}
+      <div style={{
         display: 'grid',
         gridTemplateColumns: '38fr 62fr',
-        overflow: 'hidden',
-        position: 'relative',
-      }}
-    >
-      {/* Coluna esquerda — texto */}
+      }}>
+
+        {/* Coluna esquerda — texto */}
+        <div
+          ref={headingRef}
+          className="reveal"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: 'clamp(60px, 10vh, 120px) clamp(32px, 5vw, 72px)',
+          }}
+        >
+          <p style={{
+            fontFamily: 'var(--f-text)',
+            fontSize: '13px',
+            fontWeight: 400,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            color: MADEIRA,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            marginBottom: '28px',
+          }}>
+            <span aria-hidden="true" style={{ display: 'block', width: 32, height: 1, background: MADEIRA, flexShrink: 0 }} />
+            As vivências
+          </p>
+
+          <h2
+            id="vivencias-title"
+            style={{
+              fontFamily: 'var(--f-display)',
+              fontSize: 'clamp(26px, 2.6vw, 42px)',
+              fontWeight: 400,
+              lineHeight: 1.1,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              color: TERRA,
+              marginBottom: '28px',
+            }}
+          >
+            Um chamado para homens que estão dispostos a encarar a sua verdade.
+          </h2>
+
+          <p style={{
+            fontFamily: 'var(--f-text)',
+            fontSize: 'clamp(14px, 1.1vw, 17px)',
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: TERRA_64,
+            marginBottom: '40px',
+          }}>
+            3 dias longe dos ruídos do mundo. Sem telas. Sem validação. Sem plateia.
+          </p>
+
+          <p style={{
+            fontFamily: 'var(--f-text)',
+            fontSize: '11px',
+            fontWeight: 400,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'rgba(42,29,20,0.36)',
+          }}>
+            Clique em cada vivência →
+          </p>
+        </div>
+
+        {/* Coluna direita — grid de imagens */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateRows: '1fr 1fr',
+          gap: '3px',
+          minHeight: '82svh',
+        }}>
+          {cards.map((card) => (
+            <div key={card.id} style={{ gridColumn: `span ${card.span}` }}>
+              <motion.div
+                onClick={() => handleClick(card)}
+                style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  height: '100%',
+                  width: '100%',
+                  borderRadius: 0,
+                }}
+              >
+                <motion.div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: card.grad,
+                    filter: selected && selected.id !== card.id ? 'brightness(0.45)' : 'brightness(1)',
+                    transition: 'filter 350ms ease',
+                  }}
+                />
+
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(18,17,16,0.82) 0%, rgba(18,17,16,0.1) 50%, transparent 100%)',
+                  pointerEvents: 'none',
+                }} />
+
+                {/* título padrão */}
+                <motion.div
+                  animate={{ opacity: selected?.id === card.id ? 0 : 1, y: selected?.id === card.id ? 6 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: 'clamp(16px, 2vw, 28px)',
+                  }}
+                >
+                  <p style={{
+                    fontFamily: 'var(--f-display)',
+                    fontSize: 'clamp(13px, 1.2vw, 19px)',
+                    fontWeight: 400,
+                    lineHeight: 1.15,
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase',
+                    color: OSSO,
+                  }}>
+                    {card.title}
+                  </p>
+                </motion.div>
+
+                {/* conteúdo expandido */}
+                <motion.div
+                  animate={{ opacity: selected?.id === card.id ? 1 : 0, y: selected?.id === card.id ? 0 : 20 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end',
+                    padding: 'clamp(20px, 2.5vw, 36px)',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  <p style={{
+                    fontFamily: 'var(--f-display)',
+                    fontSize: 'clamp(18px, 1.8vw, 30px)',
+                    fontWeight: 400,
+                    lineHeight: 1.1,
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase',
+                    color: OSSO,
+                    marginBottom: '10px',
+                  }}>
+                    {card.title}
+                  </p>
+                  <p style={{
+                    fontFamily: 'var(--f-text)',
+                    fontSize: 'clamp(13px, 1vw, 15px)',
+                    fontWeight: 300,
+                    lineHeight: 1.65,
+                    color: 'rgba(236,230,220,0.72)',
+                  }}>
+                    {card.desc}
+                  </p>
+                </motion.div>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* faixa de texto abaixo */}
       <div
-        ref={headingRef}
+        ref={textRef}
         className="reveal"
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: 'clamp(60px, 10vh, 120px) clamp(32px, 5vw, 72px)',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'clamp(32px, 4vw, 80px)',
+          alignItems: 'end',
+          padding: 'clamp(40px, 6vh, 72px) clamp(32px, 5vw, 96px)',
+          borderTop: '1px solid rgba(42,29,20,0.12)',
         }}
       >
         <p style={{
-          fontFamily: 'var(--f-text)',
-          fontSize: '13px',
+          fontFamily: 'var(--f-display)',
+          fontSize: 'clamp(22px, 2.2vw, 34px)',
           fontWeight: 400,
-          letterSpacing: '0.24em',
-          textTransform: 'uppercase',
-          color: MADEIRA,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '16px',
-          marginBottom: '28px',
+          lineHeight: 1.15,
+          letterSpacing: '0.01em',
+          color: TERRA,
         }}>
-          <span aria-hidden="true" style={{ display: 'block', width: 32, height: 1, background: MADEIRA, flexShrink: 0 }} />
-          As vivências
+          Entramos como homens da cidade:
         </p>
-
-        <h2
-          id="vivencias-title"
-          style={{
-            fontFamily: 'var(--f-display)',
-            fontSize: 'clamp(26px, 2.6vw, 42px)',
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '0.01em',
-            textTransform: 'uppercase',
-            color: TERRA,
-            marginBottom: '28px',
-          }}
-        >
-          Um chamado para homens que estão dispostos a encarar a sua verdade.
-        </h2>
-
         <p style={{
           fontFamily: 'var(--f-text)',
           fontSize: 'clamp(14px, 1.1vw, 17px)',
           fontWeight: 300,
           lineHeight: 1.75,
           color: TERRA_64,
-          marginBottom: '40px',
         }}>
-          3 dias longe dos ruídos do mundo. Sem telas. Sem validação. Sem plateia.
-        </p>
-
-        <p style={{
-          fontFamily: 'var(--f-text)',
-          fontSize: '11px',
-          fontWeight: 400,
-          letterSpacing: '0.22em',
-          textTransform: 'uppercase',
-          color: 'rgba(42,29,20,0.36)',
-        }}>
-          Clique em cada vivência →
+          Distraídos, acelerados, carregando dúvidas, pressões, expectativas e histórias que já não servem mais...
         </p>
       </div>
 
-      {/* Coluna direita — grid de imagens full-height */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gridTemplateRows: '1fr 1fr',
-        gap: '3px',
-        height: '100%',
-        minHeight: '100svh',
-      }}>
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            style={{ gridColumn: `span ${card.span}` }}
-          >
-            <motion.div
-              layoutId={`card-${card.id}`}
-              onClick={() => handleClick(card)}
-              style={{
-                position: 'relative',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                height: '100%',
-                width: '100%',
-                borderRadius: 0,
-              }}
-            >
-              {/* gradiente de fundo */}
-              <motion.div
-                layoutId={`bg-${card.id}`}
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: card.grad,
-                  transition: 'filter 400ms ease',
-                  filter: selected && selected.id !== card.id ? 'brightness(0.45)' : 'brightness(1)',
-                }}
-              />
-
-              {/* overlay gradiente */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to top, rgba(18,17,16,0.82) 0%, rgba(18,17,16,0.1) 50%, transparent 100%)',
-                pointerEvents: 'none',
-              }} />
-
-              {/* título padrão */}
-              <motion.div
-                animate={{ opacity: selected?.id === card.id ? 0 : 1, y: selected?.id === card.id ? 8 : 0 }}
-                transition={{ duration: 0.2 }}
-                style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: 'clamp(16px, 2vw, 28px)',
-                }}
-              >
-                <p style={{
-                  fontFamily: 'var(--f-display)',
-                  fontSize: 'clamp(14px, 1.3vw, 20px)',
-                  fontWeight: 400,
-                  lineHeight: 1.15,
-                  letterSpacing: '0.02em',
-                  textTransform: 'uppercase',
-                  color: OSSO,
-                }}>
-                  {card.title}
-                </p>
-              </motion.div>
-
-              {/* conteúdo expandido */}
-              <motion.div
-                animate={{ opacity: selected?.id === card.id ? 1 : 0, y: selected?.id === card.id ? 0 : 20 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  padding: 'clamp(20px, 2.5vw, 36px)',
-                  pointerEvents: 'none',
-                }}
-              >
-                <p style={{
-                  fontFamily: 'var(--f-display)',
-                  fontSize: 'clamp(20px, 2vw, 32px)',
-                  fontWeight: 400,
-                  lineHeight: 1.1,
-                  letterSpacing: '0.02em',
-                  textTransform: 'uppercase',
-                  color: OSSO,
-                  marginBottom: '12px',
-                }}>
-                  {card.title}
-                </p>
-                <p style={{
-                  fontFamily: 'var(--f-text)',
-                  fontSize: 'clamp(13px, 1vw, 15px)',
-                  fontWeight: 300,
-                  lineHeight: 1.65,
-                  color: 'rgba(236,230,220,0.72)',
-                }}>
-                  {card.desc}
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        ))}
-      </div>
-
-      {/* responsive */}
       <style>{`
         @media (max-width: 860px) {
-          #vivencias {
-            grid-template-columns: 1fr !important;
-            grid-template-rows: auto 70svh !important;
-          }
           #vivencias > div:first-child {
-            padding: clamp(48px, 8vh, 80px) clamp(24px, 5vw, 48px) !important;
+            grid-template-columns: 1fr !important;
+          }
+          #vivencias > div:first-child > div:last-child {
+            min-height: 65svh !important;
           }
           #vivencias > div:last-child {
-            min-height: 70svh !important;
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

@@ -30,7 +30,15 @@ export function Header() {
         transition: 'background var(--t-micro) var(--ease-out), backdrop-filter var(--t-micro) var(--ease-out)',
       }}
     >
-      <a href="#" aria-label="Sancttuary — página inicial">
+      <a
+        href="#"
+        aria-label="Sancttuary — página inicial"
+        style={{
+          opacity: scrolled ? 1 : 0,
+          transition: 'opacity 400ms var(--ease-out)',
+          pointerEvents: scrolled ? 'auto' : 'none',
+        }}
+      >
         <img
           src="/SVG/sancttuary-selo-osso.svg"
           alt="Sancttuary"

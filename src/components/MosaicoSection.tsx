@@ -56,20 +56,25 @@ export function MosaicoSection() {
 
           <h2
             ref={titleRef}
-            className="display-l reveal"
+            className="reveal"
             style={{
               position: 'absolute',
               top: '50%',
               left: 'var(--s-8)',
               transform: 'translateY(-50%)',
               maxWidth: '520px',
+              fontFamily: 'var(--f-display)',
+              fontSize: 'clamp(40px, 5vw, 80px)',
+              fontWeight: 400,
+              lineHeight: 1,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
               color: 'var(--c-osso)',
-              mixBlendMode: 'normal',
               zIndex: 2,
               textShadow: '0 2px 32px rgba(18,17,16,0.8)',
             }}
           >
-            Um lugar onde o machado encontra o silêncio.
+            Saímos como versões mais cruas, mais presentes e mais inteiras de nós mesmos.
           </h2>
         </div>
       </div>

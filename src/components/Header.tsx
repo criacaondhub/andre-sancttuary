@@ -31,16 +31,39 @@ export function Header() {
       }}
     >
       <a href="#" aria-label="Sancttuary — página inicial">
-        <SealPlaceholder size={40} />
+        <img
+          src="/SVG/sancttuary-selo-osso.svg"
+          alt="Sancttuary"
+          width={40}
+          height={40}
+          style={{ width: 40, height: 40, display: 'block' }}
+        />
       </a>
 
       <a
         href="#aplicar"
-        className="btn-secondary"
-        style={{ padding: '12px 24px', minHeight: '40px', fontSize: '12px' }}
         aria-label="Aplicar para a próxima edição"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'transparent',
+          color: 'var(--c-osso)',
+          fontFamily: 'var(--f-text)',
+          fontSize: '12px',
+          fontWeight: 400,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          textDecoration: 'none',
+          padding: '12px 24px',
+          minHeight: '40px',
+          border: '1px solid rgba(236,230,220,0.48)',
+          borderRadius: '2px',
+          cursor: 'pointer',
+          transition: 'border-color 250ms, background 250ms',
+        }}
       >
-        Aplicar
+        APLICAR
       </a>
     </header>
   )

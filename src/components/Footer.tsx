@@ -23,28 +23,36 @@ export function Footer() {
       />
 
       <div className="container-main" style={{ position: 'relative' }}>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--s-5)',
-            marginBottom: 'var(--s-10)',
-          }}
-        >
-          <FooterSeal />
-          <span
-            className="h2"
-            style={{ letterSpacing: '0.12em' }}
-          >
-            Sancttuary
-          </span>
+        <div style={{ marginBottom: 'var(--s-8)' }}>
+          <img
+            src="/SVG/sancttuary-logo-completo-osso.svg"
+            alt="Sancttuary"
+            height={48}
+            style={{ height: 48, width: 'auto', display: 'block' }}
+          />
         </div>
 
         <div style={{ marginBottom: 'var(--s-10)' }}>
-          <p className="display-l" style={{ color: 'var(--c-osso)' }}>
+          <p style={{
+            fontFamily: 'var(--f-display)',
+            fontSize: 'clamp(40px, 5vw, 80px)',
+            fontWeight: 400,
+            lineHeight: 1,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            color: 'var(--c-osso)',
+          }}>
             Nobody cares.
           </p>
-          <p className="display-l" style={{ color: 'var(--c-osso)' }}>
+          <p style={{
+            fontFamily: 'var(--f-display)',
+            fontSize: 'clamp(40px, 5vw, 80px)',
+            fontWeight: 400,
+            lineHeight: 1,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            color: 'var(--c-osso)',
+          }}>
             Do the work.
           </p>
         </div>
@@ -116,21 +124,3 @@ function InstagramIcon() {
   )
 }
 
-function FooterSeal() {
-  return (
-    <svg
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
-      fill="none"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="24" cy="24" r="22" stroke="#ECE6DC" strokeWidth="1" />
-      <circle cx="24" cy="24" r="16" stroke="#ECE6DC" strokeWidth="0.5" opacity="0.6" />
-      <circle cx="24" cy="24" r="10" stroke="#ECE6DC" strokeWidth="0.5" opacity="0.4" />
-      <line x1="16" y1="14" x2="32" y2="34" stroke="#ECE6DC" strokeWidth="1.5" opacity="0.7" />
-      <line x1="32" y1="14" x2="16" y2="34" stroke="#ECE6DC" strokeWidth="1.5" opacity="0.7" />
-    </svg>
-  )
-}

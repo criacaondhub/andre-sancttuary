@@ -31,44 +31,67 @@ export function HeroSection() {
           opacity: visible ? 1 : 0,
           transform: visible ? 'none' : 'scale(0.95)',
           transition: `opacity 800ms var(--ease-out), transform var(--t-image) var(--ease-out)`,
-          marginBottom: 'var(--s-8)',
+          marginBottom: 'var(--s-7)',
         }}
       >
-        <HeroSeal />
+        <img
+          src="/SVG/sancttuary-selo-osso.svg"
+          alt="Sancttuary"
+          width={160}
+          height={160}
+          style={{ width: 'clamp(88px, 12vw, 160px)', height: 'auto', display: 'block', margin: '0 auto' }}
+        />
       </div>
 
-      <div style={{ maxWidth: '800px' }}>
+      <div style={{ maxWidth: '860px' }}>
         <h1
-          className="display-xl"
           style={{
+            fontFamily: 'var(--f-display)',
+            fontSize: 'clamp(48px, 7vw, 112px)',
+            fontWeight: 400,
+            lineHeight: 0.95,
+            letterSpacing: '0.01em',
+            textTransform: 'uppercase',
+            color: 'var(--c-osso)',
+            marginBottom: 'var(--s-5)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'none' : 'translateY(20px)',
             transition: `opacity 900ms 80ms var(--ease-out), transform 900ms 80ms var(--ease-out)`,
-            marginBottom: 'var(--s-6)',
           }}
         >
           Sancttuary
         </h1>
 
         <p
-          className="eyebrow"
           style={{
+            fontFamily: 'var(--f-text)',
+            fontSize: '13px',
+            fontWeight: 400,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            color: 'var(--c-madeira)',
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'center',
+            gap: '16px',
+            marginBottom: 'var(--s-6)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'none' : 'translateY(20px)',
             transition: `opacity 900ms 160ms var(--ease-out), transform 900ms 160ms var(--ease-out)`,
-            marginBottom: 'var(--s-5)',
           }}
         >
           Men&apos;s Edition
         </p>
 
         <p
-          className="lead"
           style={{
-            color: 'var(--c-text-2)',
-            maxWidth: 'var(--text-max)',
-            margin: '0 auto var(--s-4)',
+            fontFamily: 'var(--f-text)',
+            fontSize: 'clamp(18px, 1.5vw, 22px)',
+            fontWeight: 300,
+            lineHeight: 1.55,
+            color: 'rgba(236,230,220,0.72)',
+            maxWidth: '34rem',
+            margin: '0 auto var(--s-5)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'none' : 'translateY(20px)',
             transition: `opacity 900ms 240ms var(--ease-out), transform 900ms 240ms var(--ease-out)`,
@@ -78,17 +101,18 @@ export function HeroSection() {
         </p>
 
         <p
-          className="eyebrow"
           style={{
-            justifyContent: 'center',
-            color: 'var(--c-text-3)',
+            fontFamily: 'var(--f-text)',
+            fontSize: '13px',
+            fontWeight: 400,
             letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(236,230,220,0.48)',
             marginBottom: 'var(--s-9)',
             opacity: visible ? 1 : 0,
             transform: visible ? 'none' : 'translateY(20px)',
             transition: `opacity 900ms 320ms var(--ease-out), transform 900ms 320ms var(--ease-out)`,
           }}
-          aria-label="Sem telas. Sem validação. Sem plateia."
         >
           Sem telas. Sem validação. Sem plateia.
         </p>
@@ -104,11 +128,46 @@ export function HeroSection() {
             transition: `opacity 900ms 400ms var(--ease-out), transform 900ms 400ms var(--ease-out)`,
           }}
         >
-          <a href="#aplicar" className="btn-primary">
-            Quero minha vaga
+          <a
+            href="#aplicar"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'var(--c-osso)',
+              color: 'var(--c-carvao)',
+              fontFamily: 'var(--f-text)',
+              fontSize: '13px',
+              fontWeight: 400,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              padding: '18px 32px',
+              borderRadius: '2px',
+              minHeight: '52px',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            QUERO MINHA VAGA
           </a>
-          <a href="#cronograma" className="btn-ghost-link" style={{ padding: '18px 0' }}>
-            Ver o cronograma
+          <a
+            href="#cronograma"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: 'var(--c-osso)',
+              fontFamily: 'var(--f-text)',
+              fontSize: '13px',
+              fontWeight: 400,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              padding: '18px 0',
+            }}
+          >
+            VER O CRONOGRAMA
             <ArrowRight />
           </a>
         </div>
@@ -133,37 +192,6 @@ export function HeroSection() {
   )
 }
 
-function HeroSeal() {
-  return (
-    <svg
-      width="160"
-      height="160"
-      viewBox="0 0 160 160"
-      fill="none"
-      aria-label="Sancttuary seal"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ maxWidth: '100px' }}
-    >
-      <circle cx="80" cy="80" r="74" stroke="#ECE6DC" strokeWidth="1.5" />
-      <circle cx="80" cy="80" r="58" stroke="#ECE6DC" strokeWidth="0.75" opacity="0.6" />
-      <circle cx="80" cy="80" r="42" stroke="#ECE6DC" strokeWidth="0.75" opacity="0.4" />
-      <line x1="60" y1="50" x2="100" y2="110" stroke="#ECE6DC" strokeWidth="2" opacity="0.8" />
-      <line x1="100" y1="50" x2="60" y2="110" stroke="#ECE6DC" strokeWidth="2" opacity="0.8" />
-      <text
-        x="80"
-        y="88"
-        textAnchor="middle"
-        fill="#ECE6DC"
-        fontFamily="var(--f-display)"
-        fontSize="32"
-        fontWeight="400"
-      >
-        S
-      </text>
-    </svg>
-  )
-}
 
 function ArrowDown() {
   return (

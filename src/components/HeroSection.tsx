@@ -125,61 +125,31 @@ export function HeroSection() {
           Sem telas. Sem validação. Sem plateia.
         </p>
 
-        <div
+        <a
+          href="#vivencias"
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'center',
+            display: 'inline-flex',
             alignItems: 'center',
+            justifyContent: 'center',
+            background: 'transparent',
+            color: 'rgba(236,230,220,0.72)',
+            fontFamily: 'var(--f-text)',
+            fontSize: '11px',
+            fontWeight: 400,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            textDecoration: 'none',
+            padding: '14px 28px',
+            border: '1px solid rgba(236,230,220,0.24)',
+            borderRadius: '2px',
+            cursor: 'pointer',
             opacity: visible ? 1 : 0,
             transform: visible ? 'none' : 'translateY(20px)',
             transition: `opacity 900ms 400ms var(--ease-out), transform 900ms 400ms var(--ease-out)`,
           }}
         >
-          <a
-            href="#aplicar"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'var(--c-osso)',
-              color: 'var(--c-carvao)',
-              fontFamily: 'var(--f-text)',
-              fontSize: '12px',
-              fontWeight: 400,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              padding: '18px 36px',
-              borderRadius: '2px',
-              minHeight: '52px',
-              border: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            QUERO MINHA VAGA
-          </a>
-          <a
-            href="#cronograma"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              color: 'rgba(236,230,220,0.72)',
-              fontFamily: 'var(--f-text)',
-              fontSize: '12px',
-              fontWeight: 400,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              padding: '18px 0',
-            }}
-          >
-            VER O CRONOGRAMA
-            <ArrowRight />
-          </a>
-        </div>
+          SAIBA MAIS
+        </a>
 
       </div>
 

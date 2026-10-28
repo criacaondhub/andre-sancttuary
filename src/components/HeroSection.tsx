@@ -1,19 +1,13 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
+const EASE = [0.22, 1, 0.36, 1] as const
+
 export function HeroSection() {
-  const [visible, setVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
-
   const { scrollY } = useScroll()
-  // background sobe mais devagar que o scroll — cria profundidade
   const bgY = useTransform(scrollY, [0, 700], ['0%', '-18%'])
-
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 120)
-    return () => clearTimeout(t)
-  }, [])
 
   return (
     <section
@@ -27,7 +21,7 @@ export function HeroSection() {
         background: '#121110',
       }}
     >
-      {/* Camada 1 — foto de fundo com parallax lento */}
+      {/* Camada 1 — foto de fundo com parallax */}
       <motion.div
         aria-hidden="true"
         style={{
@@ -42,25 +36,19 @@ export function HeroSection() {
         <img
           src="/Banner_01.webp"
           alt=""
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center top',
-            display: 'block',
-          }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
         />
       </motion.div>
 
-      {/* Camada 2 — overlay escuro para legibilidade */}
+      {/* Camada 2 — overlay */}
       <div aria-hidden="true" style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(to bottom, rgba(18,17,16,0.35) 0%, rgba(18,17,16,0.15) 45%, rgba(18,17,16,0.55) 100%)',
+        background: 'linear-gradient(to bottom, rgba(18,17,16,0.55) 0%, rgba(18,17,16,0.42) 40%, rgba(18,17,16,0.72) 100%)',
         zIndex: 1,
       }} />
 
-      {/* Camada 3 — logo + texto (z-index 2, entre bg e fg) */}
+      {/* Camada 3 — conteúdo */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -72,19 +60,15 @@ export function HeroSection() {
         padding: 'var(--gutter)',
         zIndex: 2,
       }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          maxWidth: '860px',
-          width: '100%',
-        }}>
-          <motion.div style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'none' : 'scale(0.95)',
-            transition: 'opacity 800ms var(--ease-out), transform 1400ms var(--ease-out)',
-            marginBottom: '16px',
-          }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '860px', width: '100%' }}>
+
+          {/* Logo — emerge da névoa */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.35, filter: 'blur(14px)' }}
+            animate={{ opacity: 1, scale: 1,    filter: 'blur(0px)'  }}
+            transition={{ duration: 1.8, delay: 0.2, ease: EASE }}
+            style={{ marginBottom: '16px' }}
+          >
             <img
               src="/SVG/sancttuary-selo-osso.svg"
               alt="Sancttuary"
@@ -92,150 +76,135 @@ export function HeroSection() {
             />
           </motion.div>
 
-          <h1 style={{
-            fontFamily: 'var(--f-display)',
-            fontSize: 'clamp(56px, 8vw, 128px)',
-            fontWeight: 400,
-            lineHeight: 0.9,
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-            color: 'var(--c-osso)',
-            marginBottom: '8px',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'none' : 'translateY(16px)',
-            transition: 'opacity 900ms 80ms var(--ease-out), transform 900ms 80ms var(--ease-out)',
-          }}>
+          {/* H1 */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9, ease: EASE }}
+            style={{
+              fontFamily: 'var(--f-display)',
+              fontSize: 'clamp(56px, 8vw, 128px)',
+              fontWeight: 400,
+              lineHeight: 0.9,
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              color: 'var(--c-osso)',
+              marginBottom: '8px',
+            }}
+          >
             Sancttuary
-          </h1>
+          </motion.h1>
 
-          <p style={{
-            fontFamily: 'var(--f-text)',
-            fontSize: '10px',
-            fontWeight: 400,
-            letterSpacing: '0.32em',
-            textTransform: 'uppercase',
-            color: 'var(--c-madeira)',
-            marginBottom: '20px',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'none' : 'translateY(16px)',
-            transition: 'opacity 900ms 160ms var(--ease-out), transform 900ms 160ms var(--ease-out)',
-          }}>
+          {/* Men's Edition */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.1, ease: EASE }}
+            style={{
+              fontFamily: 'var(--f-text)',
+              fontSize: '10px',
+              fontWeight: 400,
+              letterSpacing: '0.32em',
+              textTransform: 'uppercase',
+              color: 'var(--c-madeira)',
+              marginBottom: '20px',
+            }}
+          >
             Men&apos;s Edition
-          </p>
+          </motion.p>
 
-          <div aria-hidden="true" style={{
-            width: '32px',
-            height: '1px',
-            background: 'rgba(236,230,220,0.2)',
-            marginBottom: '20px',
-            opacity: visible ? 1 : 0,
-            transition: 'opacity 900ms 200ms var(--ease-out)',
-          }} />
+          {/* divider */}
+          <motion.div
+            aria-hidden="true"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.7, delay: 1.3, ease: EASE }}
+            style={{ width: '32px', height: '1px', background: 'rgba(236,230,220,0.2)', marginBottom: '20px' }}
+          />
 
-          <p style={{
-            fontFamily: 'var(--f-text)',
-            fontSize: 'clamp(14px, 1.1vw, 17px)',
-            fontWeight: 300,
-            lineHeight: 1.5,
-            color: 'rgba(236,230,220,0.6)',
-            marginBottom: '4px',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'none' : 'translateY(16px)',
-            transition: 'opacity 900ms 240ms var(--ease-out), transform 900ms 240ms var(--ease-out)',
-          }}>
+          {/* tagline 1 */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.4, ease: EASE }}
+            style={{
+              fontFamily: 'var(--f-text)',
+              fontSize: 'clamp(14px, 1.1vw, 17px)',
+              fontWeight: 300,
+              lineHeight: 1.5,
+              color: 'rgba(236,230,220,0.72)',
+              marginBottom: '4px',
+            }}
+          >
             Três dias. Sem atalhos.
-          </p>
+          </motion.p>
 
-          <p style={{
-            fontFamily: 'var(--f-text)',
-            fontSize: '10px',
-            fontWeight: 400,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'rgba(236,230,220,0.26)',
-            marginBottom: '36px',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'none' : 'translateY(16px)',
-            transition: 'opacity 900ms 320ms var(--ease-out), transform 900ms 320ms var(--ease-out)',
-          }}>
+          {/* tagline 2 */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.55, ease: EASE }}
+            style={{
+              fontFamily: 'var(--f-text)',
+              fontSize: '10px',
+              fontWeight: 400,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              color: 'rgba(236,230,220,0.32)',
+              marginBottom: '36px',
+            }}
+          >
             Sem telas. Sem validação. Sem plateia.
-          </p>
+          </motion.p>
 
-          <a href="#vivencias" style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'transparent',
-            color: 'rgba(236,230,220,0.64)',
-            fontFamily: 'var(--f-text)',
-            fontSize: '11px',
-            fontWeight: 400,
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            textDecoration: 'none',
-            padding: '13px 26px',
-            border: '1px solid rgba(236,230,220,0.2)',
-            borderRadius: '2px',
-            cursor: 'pointer',
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'none' : 'translateY(16px)',
-            transition: 'opacity 900ms 400ms var(--ease-out), transform 900ms 400ms var(--ease-out)',
-          }}>
+          {/* CTA */}
+          <motion.a
+            href="#vivencias"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.75, ease: EASE }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'transparent',
+              color: 'rgba(236,230,220,0.64)',
+              fontFamily: 'var(--f-text)',
+              fontSize: '11px',
+              fontWeight: 400,
+              letterSpacing: '0.24em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              padding: '13px 26px',
+              border: '1px solid rgba(236,230,220,0.2)',
+              borderRadius: '2px',
+              cursor: 'pointer',
+            }}
+          >
             SAIBA MAIS
-          </a>
+          </motion.a>
+
         </div>
       </div>
 
-      {/* Camada 4 — subject com máscara aplicada */}
-      <motion.div
-        aria-hidden="true"
+      {/* Seta */}
+      <motion.a
+        href="#vivencias"
+        aria-label="Rolar para baixo"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.32 }}
+        transition={{ duration: 0.9, delay: 2.2, ease: EASE }}
         style={{
           position: 'absolute',
-          top: '-12%',
-          left: 0,
-          right: 0,
-          bottom: '-12%',
-          y: bgY,
-          zIndex: 3,
-          pointerEvents: 'none',
-          WebkitMaskImage: 'url(/Banner_01_mask_home.webp)',
-          WebkitMaskSize: 'cover',
-          WebkitMaskPosition: 'center top',
-          WebkitMaskRepeat: 'no-repeat',
-          maskImage: 'url(/Banner_01_mask_home.webp)',
-          maskSize: 'cover',
-          maskPosition: 'center top',
-          maskRepeat: 'no-repeat',
-          opacity: visible ? 1 : 0,
-          transition: 'opacity 1200ms 200ms var(--ease-out)',
-        } as React.CSSProperties}
+          bottom: '32px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          animation: 'arrowBounce 2s ease-in-out infinite',
+          zIndex: 5,
+        }}
       >
-        <img
-          src="/Banner_01_sem-fundo.webp"
-          alt=""
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center top',
-            display: 'block',
-          }}
-        />
-      </motion.div>
-
-      {/* Seta de scroll — acima de tudo */}
-      <a href="#vivencias" aria-label="Rolar para baixo" style={{
-        position: 'absolute',
-        bottom: '32px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        opacity: visible ? 0.32 : 0,
-        transition: 'opacity 900ms 600ms var(--ease-out)',
-        animation: 'arrowBounce 2s ease-in-out infinite',
-        zIndex: 5,
-      }}>
         <ArrowDown />
-      </a>
+      </motion.a>
     </section>
   )
 }

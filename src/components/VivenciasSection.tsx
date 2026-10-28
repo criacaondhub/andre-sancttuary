@@ -1,15 +1,13 @@
 'use client'
 import { useReveal } from '@/hooks/useReveal'
 
-const BG      = '#F0EBE1'
-const TERRA   = '#2A1D14'
-const MADEIRA = '#876039'
-const TRONCO  = '#4D3019'
-const CASCA   = '#65412A'
+const BG       = '#F0EBE1'
+const TERRA    = '#2A1D14'
+const MADEIRA  = '#876039'
+const TRONCO   = '#4D3019'
+const CASCA    = '#65412A'
 const TERRA_64 = 'rgba(42,29,20,0.64)'
-const OSSO    = '#ECE6DC'
-const OSSO_48 = 'rgba(236,230,220,0.48)'
-const OSSO_24 = 'rgba(236,230,220,0.24)'
+const TERRA_16 = 'rgba(42,29,20,0.16)'
 
 const vivencias = [
   { num: '01', title: 'Frio',       desc: 'Banheira de gelo. O desconforto que você escolhe.' },
@@ -19,115 +17,43 @@ const vivencias = [
   { num: '05', title: 'Comida',     desc: 'Comida de verdade. Sem ultraprocessado.' },
 ]
 
-function Img({ style }: { style?: React.CSSProperties }) {
-  return (
-    <div
-      aria-hidden="true"
-      style={{
-        background: `linear-gradient(160deg, ${CASCA} 0%, ${TRONCO} 55%, ${TERRA} 100%)`,
-        ...style,
-      }}
-    />
-  )
-}
-
-function TextBlock({
-  items,
-  style,
-  split = false,
-}: {
-  items: typeof vivencias
-  style?: React.CSSProperties
-  split?: boolean
-}) {
-  return (
-    <div style={{
-      background: TERRA,
-      display: split ? 'grid' : 'flex',
-      gridTemplateColumns: split ? '1fr 1fr' : undefined,
-      flexDirection: split ? undefined : 'column',
-      ...style,
-    }}>
-      {items.map((v, i) => (
-        <div
-          key={v.title}
-          style={{
-            padding: '32px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            borderLeft: split && i > 0 ? `1px solid ${OSSO_24}` : undefined,
-            borderTop: !split && i > 0 ? `1px solid ${OSSO_24}` : undefined,
-            minHeight: split ? undefined : '180px',
-          }}
-        >
-          <span style={{
-            fontFamily: 'var(--f-text)',
-            fontSize: '10px',
-            fontWeight: 400,
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: MADEIRA,
-            marginBottom: '16px',
-            display: 'block',
-          }}>
-            {v.num}
-          </span>
-          <div>
-            <h3 style={{
-              fontFamily: 'var(--f-display)',
-              fontSize: 'clamp(18px, 1.6vw, 22px)',
-              fontWeight: 400,
-              lineHeight: 1.1,
-              letterSpacing: '0.02em',
-              textTransform: 'uppercase',
-              color: OSSO,
-              marginBottom: '10px',
-            }}>
-              {v.title}
-            </h3>
-            <p style={{
-              fontFamily: 'var(--f-text)',
-              fontSize: '13px',
-              fontWeight: 300,
-              lineHeight: 1.55,
-              color: OSSO_48,
-            }}>
-              {v.desc}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 export function VivenciasSection() {
-  const headerRef = useReveal<HTMLDivElement>()
-  const gridRef   = useReveal<HTMLDivElement>()
+  const leftRef  = useReveal<HTMLDivElement>()
+  const rightRef = useReveal<HTMLDivElement>()
 
   return (
     <section
       id="vivencias"
       aria-labelledby="vivencias-title"
-      style={{ background: BG, color: TERRA, padding: 'clamp(80px, 12vh, 160px) 0' }}
+      style={{ background: BG, color: TERRA }}
     >
       <div style={{
         maxWidth: '1280px',
         margin: '0 auto',
-        paddingLeft:  'clamp(16px, 4vw, 48px)',
-        paddingRight: 'clamp(16px, 4vw, 48px)',
+        display: 'grid',
+        gridTemplateColumns: '5fr 7fr',
+        minHeight: '100svh',
       }}>
 
-        {/* cabeçalho */}
-        <div ref={headerRef} className="reveal" style={{ marginBottom: '56px', maxWidth: '760px' }}>
+        {/* coluna esquerda — texto */}
+        <div
+          ref={leftRef}
+          className="reveal"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: 'clamp(48px, 8vh, 96px) clamp(24px, 4vw, 64px) clamp(48px, 8vh, 96px) clamp(16px, 4vw, 48px)',
+            borderRight: `1px solid ${TERRA_16}`,
+          }}
+        >
           <h1
             id="vivencias-title"
             style={{
               fontFamily: 'var(--f-display)',
-              fontSize: 'clamp(26px, 3vw, 44px)',
+              fontSize: 'clamp(24px, 2.4vw, 36px)',
               fontWeight: 400,
-              lineHeight: 1.08,
+              lineHeight: 1.1,
               letterSpacing: '0.01em',
               textTransform: 'uppercase',
               color: TERRA,
@@ -136,50 +62,86 @@ export function VivenciasSection() {
           >
             Um chamado para homens que estão dispostos a encarar a sua verdade.
           </h1>
+
           <p style={{
             fontFamily: 'var(--f-text)',
-            fontSize: 'clamp(15px, 1.3vw, 18px)',
+            fontSize: 'clamp(14px, 1.1vw, 16px)',
             fontWeight: 300,
-            lineHeight: 1.65,
+            lineHeight: 1.7,
             color: TERRA_64,
-            maxWidth: '600px',
+            marginBottom: '48px',
+            maxWidth: '42ch',
           }}>
             3 dias longe dos ruídos do mundo, em um lugar onde o machado encontra o silêncio, o corpo é testado e a alma lembra quem realmente é.
           </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {vivencias.map((v, i) => (
+              <div
+                key={v.title}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '40px 1fr',
+                  gap: '16px',
+                  alignItems: 'baseline',
+                  paddingTop: '20px',
+                  paddingBottom: '20px',
+                  borderTop: `1px solid ${TERRA_16}`,
+                  borderBottom: i === vivencias.length - 1 ? `1px solid ${TERRA_16}` : 'none',
+                }}
+              >
+                <span style={{
+                  fontFamily: 'var(--f-text)',
+                  fontSize: '10px',
+                  fontWeight: 400,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: MADEIRA,
+                }}>
+                  {v.num}
+                </span>
+                <div>
+                  <p style={{
+                    fontFamily: 'var(--f-display)',
+                    fontSize: 'clamp(15px, 1.3vw, 18px)',
+                    fontWeight: 400,
+                    lineHeight: 1.1,
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase',
+                    color: TERRA,
+                    marginBottom: '4px',
+                  }}>
+                    {v.title}
+                  </p>
+                  <p style={{
+                    fontFamily: 'var(--f-text)',
+                    fontSize: '12px',
+                    fontWeight: 300,
+                    lineHeight: 1.55,
+                    color: TERRA_64,
+                  }}>
+                    {v.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* grid mosaico */}
+        {/* coluna direita — imagem */}
         <div
-          ref={gridRef}
+          ref={rightRef}
           className="reveal"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gridTemplateRows: 'auto auto auto',
-            gap: '4px',
-          }}
+          style={{ transitionDelay: '120ms' }}
         >
-          {/* linha 1 */}
-          <Img style={{ gridColumn: '1 / 7', aspectRatio: '4/5' }} />
-          <TextBlock
-            items={vivencias.slice(0, 2)}
-            split
-            style={{ gridColumn: '7 / 13' }}
+          <div
+            aria-hidden="true"
+            style={{
+              height: '100%',
+              minHeight: '600px',
+              background: `linear-gradient(160deg, ${CASCA} 0%, ${TRONCO} 55%, ${TERRA} 100%)`,
+            }}
           />
-
-          {/* linha 2 */}
-          <TextBlock
-            items={vivencias.slice(2, 4)}
-            style={{ gridColumn: '1 / 6' }}
-          />
-          <Img style={{ gridColumn: '6 / 13', aspectRatio: '3/2' }} />
-
-          {/* linha 3 */}
-          <TextBlock
-            items={vivencias.slice(4)}
-            style={{ gridColumn: '1 / 5' }}
-          />
-          <Img style={{ gridColumn: '5 / 13', aspectRatio: '16/6' }} />
         </div>
 
       </div>

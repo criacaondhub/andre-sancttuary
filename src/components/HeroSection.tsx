@@ -33,7 +33,7 @@ export function HeroSection() {
         <img
           src="/Banner_01.webp"
           alt=""
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
         />
       </motion.div>
 
@@ -50,18 +50,6 @@ export function HeroSection() {
         inset: 0,
         background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(18,17,16,0.42) 0%, transparent 100%)',
         zIndex: 1,
-      }} />
-
-      {/* fade para a dobra 2 */}
-      <div aria-hidden="true" style={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: '28%',
-        background: 'linear-gradient(to bottom, transparent 0%, #F0EBE1 100%)',
-        zIndex: 1,
-        pointerEvents: 'none',
       }} />
 
       {/* Camada 3 — conteúdo */}

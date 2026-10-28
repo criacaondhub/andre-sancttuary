@@ -1,17 +1,14 @@
 'use client'
-import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null)
   const { scrollY } = useScroll()
   const bgY = useTransform(scrollY, [0, 700], ['0%', '-18%'])
 
   return (
     <section
-      ref={sectionRef}
       aria-label="Hero"
       style={{
         position: 'relative',

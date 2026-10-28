@@ -62,7 +62,7 @@ export function MosaicoSection() {
               top: '50%',
               left: 'var(--s-8)',
               transform: 'translateY(-50%)',
-              maxWidth: '520px',
+              maxWidth: '720px',
               fontFamily: 'var(--f-display)',
               fontSize: 'clamp(40px, 5vw, 80px)',
               fontWeight: 400,

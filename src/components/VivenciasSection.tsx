@@ -63,7 +63,7 @@ export function VivenciasSection() {
       {/* parte superior: texto esquerda + grid direita */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '38fr 62fr',
+        gridTemplateColumns: '45fr 55fr',
       }}>
 
         {/* Coluna esquerda — texto */}
@@ -139,6 +139,10 @@ export function VivenciasSection() {
           gridTemplateRows: '1fr 1fr',
           gap: '3px',
           minHeight: '82svh',
+          paddingTop: '72px',
+          paddingLeft: 'var(--gutter)',
+          paddingRight: 'var(--gutter)',
+          paddingBottom: 'var(--gutter)',
         }}>
           {cards.map((card) => (
             <div key={card.id} style={{ gridColumn: `span ${card.span}` }}>

@@ -1,0 +1,540 @@
+================================================================================
+SANCTTUARY — MEN'S EDITION
+DESIGN SYSTEM | LANDING PAGE
+Versão 1.0 — 28/10/2026
+Cliente: André Sanches (@af.sanches)
+Base: PDF "Sancttuary Men's Edition 26" + PDF "Sancttuary Retreat dez/2026"
+================================================================================
+
+
+--------------------------------------------------------------------------------
+00. ÍNDICE
+--------------------------------------------------------------------------------
+01. Essência da marca
+02. Tom de voz
+03. Logo e símbolo
+04. Cores
+05. Tipografia
+06. Grid, espaçamento e breakpoints
+07. Fotografia e tratamento de imagem
+08. Texturas e fundos
+09. Componentes de UI
+10. Formulário
+11. Movimento e animação
+12. Iconografia e elementos gráficos
+13. Acessibilidade
+14. Performance e assets
+15. Tokens CSS (pronto para copiar)
+16. Pendências com o cliente
+
+
+--------------------------------------------------------------------------------
+01. ESSÊNCIA DA MARCA
+--------------------------------------------------------------------------------
+O que é:
+  Retiro imersivo de 3 dias para homens na Villa Tanah (São Roque/SP), a cerca
+  de 50 min de São Paulo. Pilares: treino, frio, respiração, meditação, silêncio,
+  comida de verdade, sono, sem telas.
+
+Ideia central:
+  "Um lugar onde o machado encontra o silêncio."
+  Entramos como homens da cidade. Saímos como versões mais cruas, mais
+  presentes e mais inteiras de nós mesmos.
+
+Assinatura:
+  NOBODY CARES. DO THE WORK.
+
+O símbolo do machado:
+  Não é guerra. É corte, desapego, derrubar o que já não sustenta e abrir
+  espaço para o que importa.
+
+Atributos visuais (usar como filtro de decisão):
+  - Cru         → texturas reais, foto sem retoque excessivo, suor, pele
+  - Silencioso  → muito respiro, pouca informação por tela
+  - Firme       → títulos em caixa alta, alinhamentos rígidos
+  - Terroso     → marrom, madeira, pedra, mata
+  - Seletivo    → "não é para todos"; nada de visual promocional/varejo
+
+O que a marca NÃO é:
+  - Spa / bem-estar fofo (sem tons pastel, sem ícones de folhinha)
+  - Academia / fitness agressivo (sem neon, sem fonte itálica "esportiva")
+  - Militar (sem camuflado, estêncil ou estética de guerra)
+  - Promocional (sem selos de "oferta", contadores piscando, setas vermelhas)
+
+
+--------------------------------------------------------------------------------
+02. TOM DE VOZ
+--------------------------------------------------------------------------------
+Postura: um chamado, não uma venda. Fala de homem para homem, direto, sem
+floreio motivacional.
+
+Regras:
+  - Frases curtas. Ritmo de lista ("Sem telas. Sem validação. Sem plateia.")
+  - Primeira pessoa do plural ("Entramos", "Saímos") para criar irmandade
+  - Verbos concretos: suar, cortar, derrubar, respirar, encarar
+  - Títulos em CAIXA ALTA; textos de apoio em caixa normal
+  - Inglês só na assinatura (NOBODY CARES. DO THE WORK.) e em "Men's Edition"
+
+Evitar:
+  - "Transforme sua vida em 3 dias!", "Imperdível", "Garanta já"
+  - Emojis
+  - Excesso de exclamações (máx. 1 por página)
+
+CTAs aprovados (sugestão):
+  - Primário:   APLICAR PARA A PRÓXIMA EDIÇÃO  /  QUERO MINHA VAGA
+  - Secundário: SAIBA MAIS  /  VER O LUGAR  /  VER O CRONOGRAMA
+  - Form:       ENVIAR APLICAÇÃO
+  - Sucesso:    "Recebemos o seu chamado. Nossa equipe vai falar com você pelo
+                WhatsApp."
+
+
+--------------------------------------------------------------------------------
+03. LOGO E SÍMBOLO
+--------------------------------------------------------------------------------
+Elementos:
+  a) Selo completo: casa/santuário com alvo concêntrico + 2 machados cruzados
+     + faixa "NOBODY CARES · DO THE WORK"
+  b) Wordmark: SANCTTUARY (fonte Americana, caixa alta)
+  c) Lockup horizontal: selo à esquerda + wordmark à direita (usado no
+     encerramento do PDF)
+
+Versões:
+  - Off-white (#ECE6DC) sobre fundos escuros e fotos → PRINCIPAL
+  - Terra escuro (#2A1D14) sobre fundos claros (uso raro)
+  - Nunca colorido, nunca com gradiente, nunca com sombra
+
+Aplicação na LP:
+  - Hero: selo completo centralizado, 120–180px desktop / 88–112px mobile,
+    wordmark abaixo
+  - Header/canto: selo reduzido, 40–48px, canto superior (assinatura de
+    todas as lâminas do PDF)
+  - Footer: lockup horizontal
+
+Área de proteção: no mínimo a altura do alvo concêntrico ao redor do selo.
+Tamanho mínimo do selo completo: 64px (abaixo disso a faixa fica ilegível;
+usar só o símbolo sem a faixa).
+
+Proibido: distorcer, rotacionar, recolorir, contornar, aplicar sobre área da
+foto com muito ruído sem overlay.
+
+PENDÊNCIA: pedir o selo em vetor (SVG/AI/PDF). O PNG extraído do PDF
+(820x820) serve apenas para protótipo.
+
+
+--------------------------------------------------------------------------------
+04. CORES
+--------------------------------------------------------------------------------
+Paleta extraída da textura de tronco/terra e das fotos do PDF.
+
+PRIMÁRIAS
+  Terra Profunda   #2A1D14   rgb(42,29,20)     Fundo base das dobras
+  Carvão           #121110   rgb(18,17,16)     Fundo alternativo, overlays
+  Osso             #ECE6DC   rgb(236,230,220)  Texto principal, logo
+
+SECUNDÁRIAS
+  Tronco           #4D3019   rgb(77,48,25)     Cards, superfícies elevadas
+  Casca            #65412A   rgb(101,65,36)    Hover de superfícies, divisores fortes
+  Madeira Clara    #876039   rgb(135,96,57)    Acento: linhas finas, números, detalhes
+  Musgo            #2B2F24   rgb(43,47,36)     Dobra do local (ponte com a edição mista)
+
+FUNCIONAIS (texto)
+  Osso 100%        #ECE6DC   Títulos e texto principal
+  Osso 72%         rgba(236,230,220,.72)  Texto de apoio
+  Osso 48%         rgba(236,230,220,.48)  Legendas, placeholders
+  Linha            rgba(236,230,220,.16)  Bordas, divisores
+
+ESTADOS
+  Erro             #C9714F   (terracota queimado, legível no escuro)
+  Sucesso          #9DAA82   (verde musgo claro)
+  Foco             #ECE6DC  outline 2px + offset 3px
+
+Overlays para foto (texto por cima):
+  - Gradiente base:  linear-gradient(180deg, rgba(18,17,16,0) 40%,
+                     rgba(18,17,16,.85) 100%)
+  - Overlay chapado: rgba(18,17,16,.45)
+  - Overlay terra:   rgba(42,29,20,.55) (para "aquecer" fotos P&B)
+
+Proporção de uso: 70% terra/carvão · 20% foto · 8% osso · 2% madeira clara.
+A LP é dark-first. Não existe versão clara.
+
+
+--------------------------------------------------------------------------------
+05. TIPOGRAFIA
+--------------------------------------------------------------------------------
+FONTES ORIGINAIS (identificadas no PDF)
+  Display:  AMERICANA (Regular)  — títulos, wordmark
+  Texto:    TT DRUGS (Regular/Light) — corpo, legendas, UI
+  Ambas são comerciais → pedir os arquivos/licença web ao cliente ou designer.
+
+SUBSTITUTAS GRATUITAS (Google Fonts) para protótipo
+  Display:  Marcellus         (serifada larga e de baixo contraste, próxima da
+                               Americana)
+            Alternativa: Cormorant SC
+  Texto:    Jost 300/400       (geométrica leve, próxima da TT Drugs; já é a
+                               fonte da edição mista, mantém coerência)
+
+  Lembrete: se um título precisar ficar mais alto ou mais estreito, trocar de
+  fonte. NUNCA esticar ou distorcer as letras.
+
+ESCALA (desktop → mobile), fluida com clamp()
+  Nome         Fonte     Tamanho                        Entrelinha  Tracking  Caixa
+  display-xl   Display   clamp(48px, 7vw, 112px)        0.95        0.01em    ALTA
+  display-l    Display   clamp(40px, 5vw, 80px)         1.00        0.01em    ALTA
+  h1           Display   clamp(32px, 4vw, 56px)         1.05        0.01em    ALTA
+  h2           Display   clamp(24px, 2.6vw, 36px)       1.15        0.01em    ALTA
+  h3           Display   clamp(20px, 1.8vw, 24px)       1.20        0.02em    ALTA
+  lead         Texto     clamp(18px, 1.5vw, 22px)       1.55        0         normal (300)
+  body         Texto     17px / 16px mobile             1.65        0         normal (300)
+  small        Texto     14px                           1.55        0.01em    normal (400)
+  eyebrow      Texto     12–13px                        1.2         0.24em    ALTA (400)
+  button       Texto     13–14px                        1           0.18em    ALTA (400)
+
+Regras:
+  - Títulos sempre em caixa alta, peso Regular (nunca bold falso)
+  - Corpo em Light (300) sobre fundo escuro; Regular (400) em tamanhos < 14px
+  - Largura de texto corrido: máx. 60–65 caracteres (~34rem)
+  - text-wrap: balance nos títulos
+  - Alinhamento à esquerda como padrão; centralizado só no hero e no CTA final
+  - Assinatura "NOBODY CARES. DO THE WORK." sempre em display, caixa alta,
+    em duas linhas
+
+
+--------------------------------------------------------------------------------
+06. GRID, ESPAÇAMENTO E BREAKPOINTS
+--------------------------------------------------------------------------------
+Container:     máx. 1280px (conteúdo) · 1440px (imagens full-bleed internas)
+Grid:          12 colunas desktop · 8 tablet · 4 mobile
+Gutter:        clamp(16px, 4vw, 48px) nas laterais
+Gap colunas:   24px desktop · 16px mobile
+
+Escala de espaçamento (base 4/8):
+  --s-1  4px     --s-2  8px     --s-3  12px    --s-4  16px
+  --s-5  24px    --s-6  32px    --s-7  48px    --s-8  64px
+  --s-9  96px    --s-10 128px   --s-11 160px
+
+Respiro entre dobras: clamp(80px, 12vh, 160px) em cima e embaixo.
+
+Breakpoints:
+  mobile   < 640px
+  tablet   640–1023px
+  desktop  1024–1439px
+  wide     ≥ 1440px
+
+Raios: 0px (padrão). A marca é reta, como corte de machado.
+  Exceção: 2px em inputs e botões, só para suavizar o serrilhado.
+Sombras: não usar. A profundidade vem de foto, overlay e contraste.
+
+
+--------------------------------------------------------------------------------
+07. FOTOGRAFIA E TRATAMENTO DE IMAGEM
+--------------------------------------------------------------------------------
+Conteúdo:
+  - Homens reais em esforço: suor, respiração, tatuagem, close de rosto/mãos
+  - Banheira de gelo, sauna, treino, respiração em grupo deitado, silêncio
+  - Natureza densa: mata, pedra, água corrente, madeira
+  - André Sanches como rosto principal
+
+Tratamento:
+  - Alternar P&B com cor dessaturada (saturação -25 a -40%)
+  - Contraste alto, pretos profundos, luz lateral/dramática
+  - Tom quente leve nas fotos coloridas (temperatura +5 a +10)
+  - Granulação sutil opcional (grain 3–5%)
+  - Nada de foto de banco "sorrindo para a câmera"
+
+Proporções recomendadas:
+  Hero:            16:9 desktop / 4:5 ou 9:16 mobile (fazer crops separados)
+  Cards vivência:  4:5
+  Mosaico:         mistura de 4:5, 1:1 e 3:2
+  Local:           21:9 (panorâmica) + galeria 4:3
+  Quem conduz:     4:5
+  Form:            3:4
+
+Texto sobre foto: sempre com overlay (seção 04) e contraste mínimo 4.5:1.
+Posicionar o texto na área "calma" da foto (céu, parede, sombra).
+
+
+--------------------------------------------------------------------------------
+08. TEXTURAS E FUNDOS
+--------------------------------------------------------------------------------
+  - Textura de tronco/terra (capa e encerramento do PDF): fundo do hero (se
+    não houver foto/vídeo) e do footer
+  - Fundo chapado Terra Profunda: dobras de texto
+  - Fundo Carvão: dobra do form e do cronograma
+  - Fundo Musgo: dobra do local
+  - Textura sempre com overlay escuro (40–60%) para não competir com o texto
+  - Exportar textura em WebP, máx. 250KB, 2400px de largura
+
+
+--------------------------------------------------------------------------------
+09. COMPONENTES DE UI
+--------------------------------------------------------------------------------
+9.1 BOTÃO PRIMÁRIO
+  Fundo Osso #ECE6DC · texto Carvão #121110 · fonte button (caixa alta)
+  Padding 18px 32px · raio 2px · altura mín. 52px
+  Hover: fundo Madeira Clara #876039, texto Osso · transição 250ms
+  Foco: outline 2px Osso, offset 3px
+  Desabilitado: opacidade 40%
+
+9.2 BOTÃO SECUNDÁRIO (ghost)
+  Fundo transparente · borda 1px Osso 48% · texto Osso
+  Hover: borda Osso 100% e fundo Osso 6%
+
+9.3 LINK DE TEXTO / "SAIBA MAIS"
+  Texto button + linha de 1px embaixo que se expande da esquerda no hover
+  Seta fina (↓ no hero, → nos demais) com 1.5px de traço
+
+9.4 HEADER
+  Transparente sobre o hero; ao rolar, vira Carvão 85% com blur de 12px
+  Esquerda: selo 40px · Direita: botão "APLICAR" (secundário, tamanho pequeno)
+  Altura 72px desktop / 60px mobile
+
+9.5 EYEBROW (rótulo de seção)
+  Texto eyebrow em Madeira Clara + linha de 32px antes
+  Ex.: "— O LUGAR", "— QUEM CONDUZ", "— CRONOGRAMA"
+
+9.6 CARD DE VIVÊNCIA (dobra 2)
+  Imagem 4:5 em cima, P&B por padrão → cor no hover (desktop)
+  Título h3 + texto small (2–3 linhas)
+  Sem borda, sem fundo; separação só pelo gap
+  Mobile: carrossel horizontal com scroll-snap, 1.15 card visível
+
+9.7 MOSAICO (dobra 3)
+  4 fotos em grid assimétrico 12 col (ex.: 5+7 / 7+5) com alturas diferentes
+  Parallax leve (velocidades de 0.9 a 1.1)
+  Título display-l sobreposto em parte do mosaico
+
+9.8 GALERIA DO LOCAL (dobra 4)
+  1 foto panorâmica 21:9 + grid de 6–8 miniaturas 4:3
+  Clique abre lightbox com fundo Carvão 95%, setas e ESC para fechar
+
+9.9 BLOCO "QUEM CONDUZ" (dobra 5)
+  Foto 4:5 à esquerda (5 colunas), texto à direita (6 colunas, offset 1)
+  Fatos/números em linha: valor em display h2 + legenda small
+  (ex.: "350 mil seguidores", "Triatleta", "X edições do Sancttuary")
+
+9.10 CRONOGRAMA (dobra 6)
+  Abas "DIA 1 / DIA 2 / DIA 3" no topo (eyebrow + data)
+  Aba ativa: texto Osso + linha de 2px Madeira Clara embaixo
+  Conteúdo: linhas horário | atividade, separadas por linha 1px
+  Horário em tabular-nums, Madeira Clara
+  Mobile: as abas viram acordeão
+  Bloco final: check-in, check-out e política de transferência de vaga
+
+9.11 FOOTER
+  Fundo com textura · lockup horizontal · WhatsApp de dúvidas · Instagram
+  "NOBODY CARES. DO THE WORK." em display h3
+  Linha final small Osso 48%: © Sancttuary 2026
+
+9.12 BOTÃO FLUTUANTE (mobile)
+  Aparece depois da dobra 1 e some na dobra 7
+  Largura total, fixo embaixo, botão primário "APLICAR"
+  Respeitar safe-area do iPhone
+
+
+--------------------------------------------------------------------------------
+10. FORMULÁRIO (dobra 7)
+--------------------------------------------------------------------------------
+Layout: form à esquerda (6 col) · foto com frase à direita (6 col)
+Mobile: foto curta em cima (16:9) e form embaixo
+
+Campos:
+  1. Nome                        texto · obrigatório
+  2. E-mail                      email · obrigatório · validação de formato
+  3. WhatsApp                    tel · obrigatório · máscara (00) 00000-0000
+  4. Você é de SP?               radio · Sim / Não
+  5. Há quanto tempo acompanha   radio · Menos de 1 mês / Entre 1 e 6 meses /
+     o André Sanches?                    Entre 6 meses e 1 ano / Mais de 1 ano
+  6. Como você fará o            radio · À vista / Quero saber mais sobre as
+     investimento?                       condições de parcelamento
+
+Estilo dos inputs:
+  - Só linha inferior (1px Osso 32%), sem caixa. Foco: linha Osso 100%
+  - Label acima em eyebrow (Osso 72%)
+  - Texto digitado em body Osso
+  - Altura mín. 52px (toque)
+  - Radios como "pills" retangulares: borda 1px Osso 32%; selecionado =
+    fundo Osso, texto Carvão
+
+Mensagens:
+  - Erro abaixo do campo, small, cor Erro. Ex.: "Digite um e-mail válido,
+    como nome@email.com."
+  - Botão em estado de carregamento: "ENVIANDO…"
+  - Sucesso: substitui o form por "Recebemos o seu chamado." + texto de
+    próximos passos + botão WhatsApp
+
+Integração (definir): Google Sheets via Apps Script / webhook CRM.
+Rastreamento: evento Lead (Meta Pixel) e generate_lead (GA4) no envio.
+
+
+--------------------------------------------------------------------------------
+11. MOVIMENTO E ANIMAÇÃO
+--------------------------------------------------------------------------------
+Princípio: lento, pesado, intencional. Como respiração, não como academia.
+
+Curvas:
+  --ease-out:    cubic-bezier(.22, 1, .36, 1)
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1)
+
+Durações:
+  micro (hover, foco)       200–250ms
+  reveal (entrada)          800–1000ms
+  imagem (zoom/parallax)    1200–1600ms
+
+Padrões:
+  - Hero: selo aparece com fade, título sobe linha por linha (stagger 80ms),
+    imagem com zoom lento de 1.08 para 1.0
+  - Títulos de seção: revelação por máscara, de baixo para cima
+  - Imagens: clip-path revelando de baixo para cima + leve scale
+  - Mosaico: parallax
+  - Scroll suave com Lenis (lerp 0.08–0.1)
+
+Regras:
+  - Conteúdo visível mesmo sem JS (animar a partir do estado visível)
+  - prefers-reduced-motion: desligar parallax, zoom e scroll suave
+  - Nada de bounce, elastic ou rotação
+
+
+--------------------------------------------------------------------------------
+12. ICONOGRAFIA E ELEMENTOS GRÁFICOS
+--------------------------------------------------------------------------------
+  - Ícones mínimos, só funcionais: seta, fechar, WhatsApp, Instagram, mais/menos
+  - Traço de 1.5px, cantos retos, cor Osso
+  - Biblioteca sugerida: Phosphor (peso Light) ou Lucide (stroke 1.5)
+  - Divisores: linha 1px Osso 16%
+  - Numeração (01, 02…) só onde houver sequência real (dias do cronograma)
+  - O machado pode aparecer como marca d'água gigante (Osso 4%) em uma
+    única dobra, no máximo
+
+
+--------------------------------------------------------------------------------
+13. ACESSIBILIDADE
+--------------------------------------------------------------------------------
+  - Contraste: Osso sobre Terra Profunda ≈ 13:1 (OK). Osso 72% ≈ 8:1 (OK).
+    Osso 48% só para textos ≥ 14px não essenciais
+  - Madeira Clara sobre Terra Profunda ≈ 3.4:1 → só textos ≥ 18px ou
+    elementos decorativos
+  - Foco visível em todos os elementos interativos
+  - Alt descritivo em todas as fotos ("Participante em banheira de gelo
+    respirando com os olhos fechados")
+  - Form: label ligada a cada input, erros com aria-live
+  - Área de toque mínima 44x44px
+  - HTML semântico: header, main, section com aria-labelledby, footer
+
+
+--------------------------------------------------------------------------------
+14. PERFORMANCE E ASSETS
+--------------------------------------------------------------------------------
+Imagens:
+  - Formato AVIF + WebP de fallback, com srcset (640 / 1080 / 1600 / 2400)
+  - Peso alvo: hero ≤ 300KB · demais ≤ 150KB · miniaturas ≤ 60KB
+  - loading="lazy" abaixo da dobra 1; fetchpriority="high" no hero
+  - Vídeo do hero (se houver): MP4 H.264, sem áudio, ≤ 4MB, com poster
+
+Fontes:
+  - WOFF2, subset latino, font-display: swap
+  - Preload só da fonte display
+
+Metas Lighthouse: Performance ≥ 90 · Acessibilidade ≥ 95 · SEO ≥ 95
+
+SEO/Compartilhamento:
+  - <title>: Sancttuary Men's Edition | André Sanches
+  - og:image 1200x630 com selo + foto
+  - favicon do selo simplificado (32px e 180px)
+
+Nomenclatura de arquivos:
+  sancttuary-[dobra]-[descricao]-[largura].[ext]
+  ex.: sancttuary-hero-andre-gelo-1600.avif
+
+
+--------------------------------------------------------------------------------
+15. TOKENS CSS (pronto para copiar em src/styles/tokens.css)
+--------------------------------------------------------------------------------
+:root {
+  /* Cores */
+  --c-terra:        #2A1D14;
+  --c-carvao:       #121110;
+  --c-osso:         #ECE6DC;
+  --c-tronco:       #4D3019;
+  --c-casca:        #65412A;
+  --c-madeira:      #876039;
+  --c-musgo:        #2B2F24;
+
+  --c-text:         var(--c-osso);
+  --c-text-2:       rgba(236, 230, 220, .72);
+  --c-text-3:       rgba(236, 230, 220, .48);
+  --c-line:         rgba(236, 230, 220, .16);
+  --c-error:        #C9714F;
+  --c-success:      #9DAA82;
+
+  --overlay-base:   linear-gradient(180deg, rgba(18,17,16,0) 40%, rgba(18,17,16,.85) 100%);
+  --overlay-flat:   rgba(18, 17, 16, .45);
+
+  /* Tipografia */
+  --f-display: "Americana", "Marcellus", "Cormorant SC", Georgia, serif;
+  --f-text:    "TT Drugs", "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  --fs-display-xl: clamp(48px, 7vw, 112px);
+  --fs-display-l:  clamp(40px, 5vw, 80px);
+  --fs-h1:         clamp(32px, 4vw, 56px);
+  --fs-h2:         clamp(24px, 2.6vw, 36px);
+  --fs-h3:         clamp(20px, 1.8vw, 24px);
+  --fs-lead:       clamp(18px, 1.5vw, 22px);
+  --fs-body:       17px;
+  --fs-small:      14px;
+  --fs-eyebrow:    13px;
+
+  --ls-title:   .01em;
+  --ls-eyebrow: .24em;
+  --ls-button:  .18em;
+
+  /* Espaçamento */
+  --s-1: 4px;   --s-2: 8px;   --s-3: 12px;  --s-4: 16px;
+  --s-5: 24px;  --s-6: 32px;  --s-7: 48px;  --s-8: 64px;
+  --s-9: 96px;  --s-10: 128px; --s-11: 160px;
+
+  --container: 1280px;
+  --gutter:    clamp(16px, 4vw, 48px);
+  --dobra-pad: clamp(80px, 12vh, 160px);
+  --text-max:  34rem;
+
+  /* Forma */
+  --radius:    2px;
+  --line:      1px solid var(--c-line);
+
+  /* Movimento */
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --t-micro:   250ms;
+  --t-reveal:  900ms;
+  --t-image:   1400ms;
+
+  color-scheme: dark;
+}
+
+@media (max-width: 639px) {
+  :root { --fs-body: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-micro: 0ms; --t-reveal: 0ms; --t-image: 0ms; }
+}
+
+
+--------------------------------------------------------------------------------
+16. PENDÊNCIAS COM O CLIENTE
+--------------------------------------------------------------------------------
+[ ] Selo e wordmark em vetor (SVG/AI/PDF)
+[ ] Arquivos e licença web das fontes Americana e TT Drugs
+[ ] Fotos em alta: gelo, treino, respiração em grupo, André contemplando,
+    foto principal do local, retrato do André para "Quem conduz"
+[ ] Vídeo para o hero (opcional)
+[ ] Data e local da próxima edição
+[ ] Bio e números do André
+[ ] Programação dia a dia (cronograma)
+[ ] Destino das aplicações (planilha, CRM, e-mail) e WhatsApp de dúvidas
+[ ] Domínio
+[ ] IDs do Meta Pixel e do GA4
+
+================================================================================
+FIM DO DOCUMENTO
+================================================================================

@@ -8,7 +8,7 @@ export function MosaicoSection() {
     <section
       aria-label="Mosaico de imagens"
       style={{
-        background: '#F0EBE1',
+        background: 'var(--c-musgo)',
         overflow: 'hidden',
         padding: 'clamp(80px, 12vh, 160px) 0',
       }}

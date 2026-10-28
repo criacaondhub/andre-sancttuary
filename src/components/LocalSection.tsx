@@ -25,16 +25,16 @@ export function LocalSection() {
     <section
       id="local"
       aria-labelledby="local-title"
-      style={{ background: 'var(--c-musgo)' }}
+      style={{ background: '#F0EBE1', color: 'var(--c-terra)' }}
       className="section-pad"
     >
       <div className="container-main">
         <div ref={headingRef} className="reveal" style={{ marginBottom: 'var(--s-8)' }}>
-          <p className="eyebrow" style={{ marginBottom: 'var(--s-5)' }}>O lugar</p>
-          <h2 id="local-title" className="h2" style={{ marginBottom: 'var(--s-4)' }}>
+          <p className="eyebrow" style={{ marginBottom: 'var(--s-5)', color: 'var(--c-madeira)' }}>O lugar</p>
+          <h2 id="local-title" className="h2" style={{ marginBottom: 'var(--s-4)', color: 'var(--c-terra)' }}>
             Villa Tanah. São Roque, SP.
           </h2>
-          <p className="lead" style={{ color: 'var(--c-text-2)', maxWidth: 'var(--text-max)' }}>
+          <p className="lead" style={{ color: 'rgba(42,29,20,0.64)', maxWidth: 'var(--text-max)' }}>
             A 50 minutos de São Paulo. Mata, pedra, água corrente. Sem sinal.
           </p>
         </div>

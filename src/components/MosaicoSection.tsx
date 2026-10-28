@@ -7,10 +7,13 @@ export function MosaicoSection() {
   return (
     <section
       aria-label="Mosaico de imagens"
-      style={{ background: 'var(--c-carvao)', overflow: 'hidden' }}
-      className="section-pad"
+      style={{
+        background: '#F0EBE1',
+        overflow: 'hidden',
+        padding: 'clamp(80px, 12vh, 160px) 0',
+      }}
     >
-      <div className="container-main">
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
         <div
           style={{
             display: 'grid',
@@ -25,7 +28,7 @@ export function MosaicoSection() {
             style={{
               gridColumn: '1 / 6',
               aspectRatio: '4/5',
-              background: 'linear-gradient(135deg, var(--c-tronco) 0%, var(--c-carvao) 100%)',
+              background: 'linear-gradient(135deg, #2B2F24 0%, #1A1E16 100%)',
             }}
           />
           <div
@@ -33,7 +36,7 @@ export function MosaicoSection() {
             style={{
               gridColumn: '6 / 13',
               aspectRatio: '3/2',
-              background: 'linear-gradient(135deg, var(--c-musgo) 0%, var(--c-carvao) 100%)',
+              background: 'linear-gradient(135deg, #3A4030 0%, #2B2F24 100%)',
               alignSelf: 'end',
             }}
           />
@@ -42,7 +45,7 @@ export function MosaicoSection() {
             style={{
               gridColumn: '1 / 8',
               aspectRatio: '3/2',
-              background: 'linear-gradient(135deg, var(--c-terra) 0%, var(--c-tronco) 100%)',
+              background: 'linear-gradient(135deg, #2B2F24 0%, #4D3019 100%)',
             }}
           />
           <div
@@ -50,7 +53,7 @@ export function MosaicoSection() {
             style={{
               gridColumn: '8 / 13',
               aspectRatio: '1/1',
-              background: 'linear-gradient(135deg, var(--c-casca) 0%, var(--c-terra) 100%)',
+              background: 'linear-gradient(135deg, #3A4030 0%, #2B2F24 100%)',
             }}
           />
 
@@ -60,7 +63,7 @@ export function MosaicoSection() {
             style={{
               position: 'absolute',
               top: '50%',
-              left: 'var(--s-8)',
+              left: 'clamp(24px, 4vw, 64px)',
               transform: 'translateY(-50%)',
               maxWidth: '720px',
               fontFamily: 'var(--f-display)',

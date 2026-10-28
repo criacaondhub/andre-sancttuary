@@ -16,13 +16,40 @@ export function VivenciasSection() {
     <section
       id="vivencias"
       aria-labelledby="vivencias-title"
-      style={{ background: 'var(--c-terra)' }}
+      style={{ background: '#F0EBE1', color: 'var(--c-terra)' }}
       className="section-pad"
     >
       <div className="container-main">
         <div ref={headingRef} className="reveal" style={{ marginBottom: 'var(--s-9)' }}>
-          <p className="eyebrow" style={{ marginBottom: 'var(--s-5)' }}>As vivências</p>
-          <h2 id="vivencias-title" className="h2">
+          <p
+            style={{
+              fontFamily: 'var(--f-text)',
+              fontSize: '13px',
+              fontWeight: 400,
+              letterSpacing: '0.24em',
+              textTransform: 'uppercase',
+              color: 'var(--c-madeira)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
+              marginBottom: 'var(--s-5)',
+            }}
+          >
+            <span style={{ display: 'block', width: 32, height: 1, background: 'var(--c-madeira)', flexShrink: 0 }} aria-hidden="true" />
+            As vivências
+          </p>
+          <h2
+            id="vivencias-title"
+            style={{
+              fontFamily: 'var(--f-display)',
+              fontSize: 'clamp(24px, 2.6vw, 36px)',
+              fontWeight: 400,
+              lineHeight: 1.15,
+              letterSpacing: '0.01em',
+              textTransform: 'uppercase',
+              color: 'var(--c-terra)',
+            }}
+          >
             Três dias. Sem atalhos.
           </h2>
         </div>
@@ -89,8 +116,24 @@ function VivenciaCard({ title, desc, index }: { title: string; desc: string; ind
           marginBottom: 'var(--s-5)',
         }}
       />
-      <h3 className="h3" style={{ marginBottom: 'var(--s-3)' }}>{title}</h3>
-      <p className="small-text" style={{ color: 'var(--c-text-2)' }}>{desc}</p>
+      <h3 style={{
+        fontFamily: 'var(--f-display)',
+        fontSize: 'clamp(20px, 1.8vw, 24px)',
+        fontWeight: 400,
+        lineHeight: 1.2,
+        letterSpacing: '0.02em',
+        textTransform: 'uppercase',
+        color: 'var(--c-terra)',
+        marginBottom: 'var(--s-3)',
+      }}>{title}</h3>
+      <p style={{
+        fontFamily: 'var(--f-text)',
+        fontSize: '14px',
+        fontWeight: 400,
+        lineHeight: 1.55,
+        letterSpacing: '0.01em',
+        color: 'rgba(42,29,20,0.64)',
+      }}>{desc}</p>
     </div>
   )
 }

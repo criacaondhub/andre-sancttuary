@@ -22,22 +22,30 @@ const TERRA_16 = 'rgba(42,29,20,0.16)'
 function SectionHeader() {
   const ref = useReveal<HTMLDivElement>()
   return (
-    <div ref={ref} className="reveal" style={{ marginBottom: '64px' }}>
+    <div ref={ref} className="reveal" style={{ marginBottom: '72px', maxWidth: '860px' }}>
+      <h1 style={{
+        fontFamily: 'var(--f-display)',
+        fontSize: 'clamp(28px, 3.2vw, 48px)',
+        fontWeight: 400,
+        lineHeight: 1.1,
+        letterSpacing: '0.01em',
+        textTransform: 'uppercase',
+        color: TERRA,
+        marginBottom: '24px',
+        textWrap: 'balance',
+      } as React.CSSProperties}>
+        Um chamado para homens que estão dispostos a encarar a sua verdade.
+      </h1>
       <p style={{
-        fontFamily: 'var(--f-text)', fontSize: '11px', fontWeight: 400,
-        letterSpacing: '0.28em', textTransform: 'uppercase', color: MADEIRA,
-        display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px',
+        fontFamily: 'var(--f-text)',
+        fontSize: 'clamp(16px, 1.4vw, 19px)',
+        fontWeight: 300,
+        lineHeight: 1.65,
+        color: TERRA_64,
+        maxWidth: '640px',
       }}>
-        <span style={{ display: 'block', width: 32, height: 1, background: MADEIRA }} aria-hidden="true" />
-        As vivências
+        3 dias longe dos ruídos do mundo, em um lugar onde o machado encontra o silêncio, o corpo é testado e a alma lembra quem realmente é.
       </p>
-      <h2 style={{
-        fontFamily: 'var(--f-display)', fontSize: 'clamp(24px, 2.6vw, 36px)',
-        fontWeight: 400, lineHeight: 1.1, letterSpacing: '0.01em',
-        textTransform: 'uppercase', color: TERRA,
-      }}>
-        Três dias. Sem atalhos.
-      </h2>
     </div>
   )
 }

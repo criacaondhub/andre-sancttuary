@@ -25,11 +25,9 @@ export function VivenciasSection() {
     <section
       id="vivencias"
       aria-labelledby="vivencias-title"
-      style={{ background: BG, color: TERRA }}
+      style={{ background: BG, color: TERRA, overflow: 'hidden' }}
     >
       <div style={{
-        maxWidth: '1280px',
-        margin: '0 auto',
         display: 'grid',
         gridTemplateColumns: '5fr 7fr',
         minHeight: '100svh',
@@ -43,7 +41,7 @@ export function VivenciasSection() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            padding: 'clamp(48px, 8vh, 96px) clamp(24px, 4vw, 64px) clamp(48px, 8vh, 96px) clamp(16px, 4vw, 48px)',
+            padding: 'clamp(64px, 10vh, 120px) clamp(48px, 5vw, 96px) clamp(64px, 10vh, 120px) clamp(48px, 5vw, 96px)',
             borderRight: `1px solid ${TERRA_16}`,
           }}
         >

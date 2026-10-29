@@ -38,7 +38,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    // suppressHydrationWarning: extensões (ex.: QuillBot) injetam atributos no <html> antes do
+    // React carregar; isto ignora só os atributos desta tag, não erros do resto da página
     <html
+      suppressHydrationWarning
       lang="pt-BR"
       className={`${marcellus.variable} ${jost.variable}`}
       style={{

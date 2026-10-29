@@ -1,8 +1,15 @@
 'use client'
-import { useReveal } from '@/hooks/useReveal'
+import { useRef } from 'react'
+import { useScroll } from 'framer-motion'
+import { RevealWords } from '@/components/RevealWords'
+
+const imgStyle: React.CSSProperties = { width: '100%', height: '100%', objectFit: 'cover', display: 'block' }
 
 export function MosaicoSection() {
-  const titleRef = useReveal<HTMLHeadingElement>()
+  // o título fica centralizado no mosaico: as palavras acendem enquanto o centro
+  // do mosaico sobe do pé da tela até 40% da altura
+  const gridRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: gridRef, offset: ['center 1', 'center 0.4'] })
 
   return (
     <section
@@ -15,6 +22,7 @@ export function MosaicoSection() {
     >
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
         <div
+          ref={gridRef}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
@@ -30,7 +38,9 @@ export function MosaicoSection() {
               aspectRatio: '4/5',
               background: 'linear-gradient(135deg, #2B2F24 0%, #1A1E16 100%)',
             }}
-          />
+          >
+            <img src="/Dobra_03/CMC01770.webp" alt="" loading="lazy" style={{ ...imgStyle, objectPosition: 'center 50%' }} />
+          </div>
           <div
             aria-hidden="true"
             style={{
@@ -39,7 +49,9 @@ export function MosaicoSection() {
               background: 'linear-gradient(135deg, #3A4030 0%, #2B2F24 100%)',
               alignSelf: 'end',
             }}
-          />
+          >
+            <img src="/Dobra_03/CMC01824.webp" alt="" loading="lazy" style={{ ...imgStyle, objectPosition: 'center 58%' }} />
+          </div>
           <div
             aria-hidden="true"
             style={{
@@ -47,7 +59,9 @@ export function MosaicoSection() {
               aspectRatio: '3/2',
               background: 'linear-gradient(135deg, #2B2F24 0%, #4D3019 100%)',
             }}
-          />
+          >
+            <img src="/Dobra_03/CMC02142.webp" alt="" loading="lazy" style={{ ...imgStyle, objectPosition: 'center 63%' }} />
+          </div>
           <div
             aria-hidden="true"
             style={{
@@ -55,11 +69,20 @@ export function MosaicoSection() {
               aspectRatio: '1/1',
               background: 'linear-gradient(135deg, #3A4030 0%, #2B2F24 100%)',
             }}
-          />
+          >
+            <img src="/Dobra_03/CMC03020.webp" alt="" loading="lazy" style={{ ...imgStyle, objectPosition: 'center 15%' }} />
+          </div>
+
+          {/* vinheta atrás do título para ele não sumir sobre partes claras das fotos */}
+          <div aria-hidden="true" style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(ellipse 55% 38% at 32% 50%, rgba(18,17,16,0.62) 0%, rgba(18,17,16,0.3) 55%, transparent 100%)',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }} />
 
           <h2
-            ref={titleRef}
-            className="reveal"
             style={{
               position: 'absolute',
               top: '50%',
@@ -77,7 +100,10 @@ export function MosaicoSection() {
               textShadow: '0 2px 32px rgba(18,17,16,0.8)',
             }}
           >
-            Saímos como versões mais cruas, mais presentes e mais inteiras de nós mesmos.
+            <RevealWords
+              text={'Saímos como versões mais cruas, mais presentes e mais inteiras de nós mesmos.'}
+              progress={scrollYProgress}
+            />
           </h2>
         </div>
       </div>

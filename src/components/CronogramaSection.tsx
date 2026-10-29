@@ -52,13 +52,13 @@ export function CronogramaSection() {
       id="cronograma"
       aria-labelledby="cronograma-title"
       style={{ background: 'var(--c-carvao)' }}
-      className="section-pad"
+      className="section-pad m-center"
     >
       <div className="container-main">
         <div ref={headingRef} className="reveal" style={{ marginBottom: 'var(--s-9)' }}>
           <p className="eyebrow" style={{ marginBottom: 'var(--s-5)' }}>Cronograma</p>
           <h2 id="cronograma-title" className="h2">
-            Três dias. Cada hora, intencional.
+            Três dias. Cada hora,&nbsp;intencional.
           </h2>
         </div>
 
@@ -147,7 +147,8 @@ export function CronogramaSection() {
                   padding: 'var(--s-5) 0',
                   cursor: 'pointer',
                   display: 'flex',
-                  justifyContent: 'space-between',
+                  justifyContent: 'center',
+                  gap: 'var(--s-3)',
                   alignItems: 'center',
                   fontFamily: 'var(--f-text)',
                   fontSize: 'var(--fs-eyebrow)',
@@ -167,17 +168,18 @@ export function CronogramaSection() {
                   <div
                     key={item.hora}
                     style={{
+                      // horário à direita e atividade à esquerda de um eixo central
                       display: 'grid',
-                      gridTemplateColumns: '80px 1fr',
+                      gridTemplateColumns: '1fr 1fr',
                       gap: 'var(--s-4)',
                       padding: 'var(--s-4) 0',
                       borderBottom: j < dia.items.length - 1 ? 'var(--line)' : 'none',
                     }}
                   >
-                    <span className="small-text" style={{ color: 'var(--c-madeira)', fontVariantNumeric: 'tabular-nums' }}>
+                    <span className="small-text" style={{ color: 'var(--c-madeira)', fontVariantNumeric: 'tabular-nums', textAlign: 'right' }}>
                       {item.hora}
                     </span>
-                    <span className="small-text">{item.atividade}</span>
+                    <span className="small-text" style={{ textAlign: 'left' }}>{item.atividade}</span>
                   </div>
                 ))}
               </div>
@@ -193,12 +195,12 @@ export function CronogramaSection() {
           }}
         >
           <p
-            className="eyebrow"
+            className="eyebrow eyebrow-plain"
             style={{ marginBottom: 'var(--s-4)', color: 'var(--c-text-2)' }}
           >
-            Check-in: 16h00 · Check-out: 15h00
+            Check-in: 16h00 · Check-out:&nbsp;15h00
           </p>
-          <p className="small-text" style={{ color: 'var(--c-text-3)', maxWidth: 'var(--text-max)' }}>
+          <p className="small-text m-block" style={{ color: 'var(--c-text-3)', maxWidth: 'var(--text-max)' }}>
             Vagas são transferíveis com aviso de 15 dias. Não há reembolso após confirmação.
           </p>
         </div>

@@ -15,7 +15,7 @@ export function QuemConduSection() {
       id="quem-conduz"
       aria-labelledby="quem-title"
       style={{ background: 'var(--c-terra)' }}
-      className="section-pad"
+      className="section-pad m-center"
     >
       <div className="container-main">
         <div
@@ -28,12 +28,18 @@ export function QuemConduSection() {
           className="quem-grid"
         >
           <div
-            aria-label="Retrato de André Sanches"
             style={{
               aspectRatio: '4/5',
               background: 'linear-gradient(160deg, var(--c-casca) 0%, var(--c-terra) 100%)',
             }}
-          />
+          >
+            <img
+              src="/Dobra_05/pag10_img051.webp"
+              alt="Retrato de André Sanches"
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 65%', display: 'block' }}
+            />
+          </div>
 
           <div />
 
@@ -43,7 +49,7 @@ export function QuemConduSection() {
               André Sanches
             </h2>
             <p
-              className="lead"
+              className="lead m-block"
               style={{
                 color: 'var(--c-text-2)',
                 maxWidth: 'var(--text-max)',
@@ -54,6 +60,7 @@ export function QuemConduSection() {
             </p>
 
             <div
+              className="m-flex"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',

@@ -7,7 +7,6 @@ import { QuemConduSection } from '@/components/QuemConduSection'
 import { CronogramaSection } from '@/components/CronogramaSection'
 import { FormSection } from '@/components/FormSection'
 import { Footer } from '@/components/Footer'
-import { FloatingCTA } from '@/components/FloatingCTA'
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
         <FormSection />
       </main>
       <Footer />
-      <FloatingCTA />
     </>
   )
 }

@@ -98,6 +98,31 @@ body {
   padding-bottom: var(--dobra-pad);
 }
 
+/* celular: conteúdo centralizado nas seções com .m-center (todas menos a dobra 3).
+   .m-flex = linha flex que deve centralizar; .m-block = bloco com largura máxima (texto, logo)
+   que deve centralizar — não usar em itens de flex/grid, onde margem automática desloca o item */
+@media (max-width: 639px) {
+  .m-center { text-align: center; }
+  .m-center .eyebrow,
+  .m-center .m-flex { justify-content: center !important; }
+  /* rótulo longo: a linha decorativa sobe para cima do texto em vez de ficar presa à esquerda */
+  .m-center .eyebrow { flex-wrap: wrap; }
+  /* tags de seção: segundo traço à direita (rótulos do form não têm traço; .eyebrow-plain fica com um só).
+     .tag-lines = tag montada sem a classe .eyebrow (dobra 2) */
+  .m-center .eyebrow:not(label):not(legend):not(.eyebrow-plain)::after,
+  .m-center .tag-lines::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--c-madeira);
+    flex-shrink: 0;
+  }
+  .m-center .m-block { margin-left: auto; margin-right: auto; }
+  .m-center .caption { justify-content: center; text-align: center !important; }
+  .m-center input { text-align: center; }
+}
+
 .eyebrow {
   font-family: var(--f-text);
   font-size: var(--fs-eyebrow);
@@ -191,6 +216,16 @@ body {
   letter-spacing: .01em;
 }
 
+/* celular: quebra de linha "pretty" em todo o texto, títulos incluídos, para não sobrar
+   palavra sozinha (viúva) na última linha. O body passa para tudo por herança; as classes
+   de título precisam ser repetidas porque declaram `balance` direto nelas.
+   O pretty aceita uma palavra longa sozinha no fim, então nos títulos as duas últimas
+   palavras também vão unidas por &nbsp; (ou   em strings) */
+@media (max-width: 639px) {
+  body,
+  .display-xl, .display-l, .h1, .h2, .h3 { text-wrap: pretty; }
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -224,6 +259,20 @@ body {
 .btn-primary:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* botão principal sobre fundo claro (ex.: dobra 7): escuro em vez de osso */
+.btn-primary.btn-on-light {
+  background: var(--c-terra);
+  color: var(--c-osso);
+}
+
+.btn-primary.btn-on-light:hover {
+  background: var(--c-madeira);
+}
+
+.btn-primary.btn-on-light:focus-visible {
+  outline-color: var(--c-terra);
 }
 
 .btn-secondary {
@@ -300,6 +349,11 @@ body {
   transition: opacity var(--t-reveal) var(--ease-out), transform var(--t-reveal) var(--ease-out);
 }
 
+/* variante: entra deslizando da esquerda em vez de subir (fica antes de .revealed, que zera) */
+.reveal.reveal-left {
+  transform: translateX(-32px);
+}
+
 .reveal.revealed {
   opacity: 1;
   transform: translateY(0);
@@ -307,11 +361,17 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
+  .reveal.reveal-left,
   .reveal.revealed {
     opacity: 1;
     transform: none;
     transition: none;
   }
+}
+
+/* palavras reveladas pela rolagem (RevealWords): o !important vence a opacidade inline */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-word { opacity: 1 !important; }
 }
 
 @keyframes fadeIn {

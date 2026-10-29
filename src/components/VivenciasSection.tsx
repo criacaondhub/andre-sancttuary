@@ -14,22 +14,28 @@ type Card = {
   title: string
   desc: string
   grad: string
+  img: string
+  pos: string
   span: number
 }
 
 const cards: Card[] = [
   {
     id: 1,
-    title: 'Imersão no Gelo',
+    title: 'Imersão no Gelo',
     desc: 'Banheira de gelo. O desconforto que você escolhe.',
     grad: 'linear-gradient(160deg, #65412A 0%, #4D3019 60%, #2A1D14 100%)',
+    img: '/imersão_no_gelo.webp',
+    pos: 'center 50%',
     span: 2,
   },
   {
     id: 2,
-    title: 'Treinos longos e curtos',
+    title: 'Treinos longos e curtos',
     desc: 'Suor antes do café. O corpo como ferramenta.',
     grad: 'linear-gradient(160deg, #2B2F24 0%, #4D3019 50%, #2A1D14 100%)',
+    img: '/Treinos_longos_e_curtos.webp',
+    pos: 'center 55%',
     span: 1,
   },
   {
@@ -37,13 +43,17 @@ const cards: Card[] = [
     title: 'Respiração e Meditação',
     desc: 'Pranayama, Wim Hof. Presença total.',
     grad: 'linear-gradient(160deg, #4D3019 0%, #65412A 50%, #2A1D14 100%)',
+    img: '/Respiração_e_meditação.webp',
+    pos: 'center 55%',
     span: 1,
   },
   {
     id: 4,
-    title: 'Sem tela, sem validação, sem plateia',
+    title: 'Sem tela, sem validação, sem plateia',
     desc: 'Silêncio sem tela. Só você e o que há.',
     grad: 'linear-gradient(160deg, #2A1D14 0%, #2B2F24 60%, #121110 100%)',
+    img: '/Sem-tela.webp',
+    pos: 'center 52%',
     span: 2,
   },
 ]
@@ -58,7 +68,7 @@ export function VivenciasSection() {
   }
 
   return (
-    <section id="vivencias" aria-labelledby="vivencias-title" style={{ background: BG, overflow: 'hidden' }}>
+    <section id="vivencias" aria-labelledby="vivencias-title" className="m-center" style={{ background: BG, overflow: 'hidden' }}>
 
       {/* parte superior: texto esquerda + grid direita */}
       <div style={{
@@ -77,7 +87,7 @@ export function VivenciasSection() {
             padding: 'clamp(60px, 10vh, 120px) clamp(32px, 5vw, 72px)',
           }}
         >
-          <p style={{
+          <p className="m-flex tag-lines" style={{
             fontFamily: 'var(--f-text)',
             fontSize: '13px',
             fontWeight: 400,
@@ -106,7 +116,7 @@ export function VivenciasSection() {
               marginBottom: '28px',
             }}
           >
-            Um chamado para homens que estão dispostos a encarar a sua verdade.
+            Um chamado para homens que estão dispostos a encarar a sua&nbsp;verdade.
           </h2>
 
           <p style={{
@@ -165,7 +175,14 @@ export function VivenciasSection() {
                     filter: selected && selected.id !== card.id ? 'brightness(0.45)' : 'brightness(1)',
                     transition: 'filter 350ms ease',
                   }}
-                />
+                >
+                  <img
+                    src={card.img}
+                    alt=""
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: card.pos, display: 'block' }}
+                  />
+                </motion.div>
 
                 <div style={{
                   position: 'absolute',
@@ -262,7 +279,7 @@ export function VivenciasSection() {
           letterSpacing: '0.01em',
           color: TERRA,
         }}>
-          Entramos como homens da cidade:
+          Entramos como homens da&nbsp;cidade:
         </p>
         <p style={{
           fontFamily: 'var(--f-text)',
@@ -283,7 +300,7 @@ export function VivenciasSection() {
           #vivencias > div:first-child > div:last-child {
             min-height: 65svh !important;
           }
-          #vivencias > div:last-child {
+          #vivencias > div:last-of-type {
             grid-template-columns: 1fr !important;
           }
         }

@@ -86,6 +86,12 @@ body {
   overflow-x: hidden;
 }
 
+/* desktop: esconde a barra de rolagem lateral (a página continua rolando) */
+@media (min-width: 640px) {
+  html { scrollbar-width: none; }
+  html::-webkit-scrollbar { display: none; }
+}
+
 .container-main {
   max-width: var(--container);
   margin: 0 auto;
